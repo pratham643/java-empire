@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" type="png" href="images/icon/favicon.png">
+	<title>Login SignUp</title>
+	<link rel="stylesheet" type="text/css" href="loginStyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- It will redirect to the Home Page after submitting the form -->
+  
+</head>
+<div id="flash-message">
+	<p>Note: User id is <span style="color: rgb(250, 253, 249); font-size: larger; "> "JavaEmpire" </span> and Password is <span style="color: rgb(247, 253, 247) ; font-size: larger; "> "java@01"</span>.Please don't try to signup.</p>
+	
+  </div>
+<body>
+		<div class="form-box">
+			<div class="button-box">
+				<div id="btn"></div>
+				<button type="button" class="toggle-btn" id="log" onclick="login()" style="color: #fff;">Log In</button>
+				<button type="button" class="toggle-btn" id="reg" onclick="register()">Register</button>
+			</div>
+			<div class="social-icons">
+				<img src="images/icon/fb2.png">
+				<img src="images/icon/insta2.png">
+				<img src="images/icon/tt2.png">
+			</div>
+			
+			<!-- Login Form -->
+			<form id="login" class="input-group" onsubmit="return validate()">
+				<div class="inp">
+					<img src="images/icon/user.png"><input type="text" id="username" class="input-field" placeholder="Username or Phone Number" style="width: 88%; border:none;" required="required">
+				</div>
+				<div class="inp">
+					<img src="images/icon/password.png"><input type="password" id="password" class="input-field" placeholder="Password" style="width: 88%; border: none;" required="required">
+				</div>
+				<input type="checkbox" class="check-box">Remember Password
+				<button type="submit" class="submit-btn">Log In</button>
+			</form>
+
+
+			<div class="other" id="other">
+				<div class="instead">
+					<h3>or</h3>
+				</div>
+				<button class="connect" onclick="google()">
+					<img src="images/icon/google.png"><span>Sign in with Google</span>
+				</button>
+			</div>
+			<script>
+				function validate() {
+							var username = document.getElementById("username").value;
+					var password = document.getElementById("password").value;
+					var user1 = {
+						username: "JavaEmpire",
+						password: "java@01"
+					};
+					var users = [user1];
+					var authenticated = false;
+					for(var i = 0; i < users.length; i++) {
+						if(username === users[i].username && password === users[i].password) {
+							authenticated = true;
+							break;
+						}
+					}
+					if(authenticated) {
+						window.location.href = "home.html";
+						return false;
+					} else {
+						alert("Invalid username or password.");
+						return false;
+					}
+				}
+				  </script>
+			
+			<!-- Registration Form -->
+			<form id="register" class="input-group">
+				<input type="text" class="input-field" placeholder="Full Name" required="required">
+				<input type="email" class="input-field" placeholder="Email Address" required="required">
+				<input type="password" class="input-field" placeholder="Create Password" name="psame" required="required">
+				<input type="password" class="input-field" placeholder="Confirm Password" name="psame" required="required">
+				<input type="checkbox" class="check-box" id="chkAgree" onclick="goFurther()">I agree to the Terms & Conditions
+				<button type="submit" id="btnSubmit" class="submit-btn reg-btn">Register</button>
+			</form>
+		</div>
+		<script type="text/javascript" src="script.js"></script>
+		
+</body>
+</html>
